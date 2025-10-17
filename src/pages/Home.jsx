@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import React from "react";
 import { useRef } from "react";
 import { MdArrowOutward, MdArrowBack,MdArrowForward } from "react-icons/md";
@@ -7,6 +6,8 @@ import { ServiceCard } from "../components/ServiceCard";
 import {TestimonialCard} from "../components/TestimonialCard"
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
+import Animations from "../components/Animations";
+
 
 export default function Home() {
 
@@ -81,7 +82,6 @@ export default function Home() {
   function scrollNext() {
     const el = carouselRef.current;
     if (!el) return;
-    // scroll by the width of the container (one page)
     el.scrollBy({ left: el.clientWidth, behavior: "smooth" });
   }
 
@@ -120,7 +120,7 @@ export default function Home() {
           <div className=" flex flex-col justify-start  space-y-6 md:space-y-58">
             <p className="flex items-center gap-2 text-sm md:text-base"><BsFillHexagonFill />About Us</p>
 
-            <button className="btn-black flex items-center gap-3 whitespace-nowrap w-fit">
+            <button className="about-btn btn-black flex items-center gap-3 whitespace-nowrap w-fit">
               About Company <MdArrowOutward />
             </button>
           </div>
@@ -310,12 +310,16 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="sec-h-w my-26 w-full">
+    <section
+    id="contact" 
+    className="sec-h-w my-26 w-full">
       <div className="md:w-3/4 mx-auto"><Contact/></div>
           
     </section>
 
     <Footer/>
+    <Animations />
+
     </>
   );
 }

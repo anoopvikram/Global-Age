@@ -1,10 +1,41 @@
-// src/components/Navbar.jsx
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const nav = navRef.current;
+
+
+gsap.to(nav, {
+  backdropFilter: "blur(15px)",
+  backgroundColor: "rgba(255, 255, 255, 0.12)", 
+  boxShadow: "0 1px 8px rgba(0,0,0,0.08)",
+  duration: 0.4,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: document.body,
+    start: "top -1", 
+    end: "bottom top",
+    toggleActions: "play none none reverse",
+  },
+});
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300"
+    >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
         <div className="flex items-center">
@@ -26,9 +57,9 @@ export default function Navbar() {
 
         {/* Contact Button */}
         <div>
-        <button className="btn-gradient flex items-center gap-8">
-            Contact Us <MdArrowOutward/>
-        </button>
+          <button className="btn-gradient flex items-center gap-8">
+            Contact Us <MdArrowOutward />
+          </button>
         </div>
       </div>
     </nav>
