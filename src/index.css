@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@layer components {
+
+  .sec-h-w{
+    @apply min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] w-full md:w-3/4 mx-auto
+  }
+
+  .gradient-bg{
+    background: linear-gradient(to right, #339589, #0F6F74);
+  }
+
+  .btn-gradient {
+    @apply inline-block px-6 py-3 rounded-full text-lg font-medium text-white transition hover:opacity-90 whitespace-nowrap;
+    background: linear-gradient(to right, #339589, #086770);
+  }
+
+    .btn-black {
+    @apply inline-block px-6 py-3 rounded-full text-lg font-medium bg-black text-white transition hover:opacity-90 whitespace-nowrap;
+    
+  }
+
+      .btn-white {
+    @apply inline-block px-6 py-3 rounded-full text-lg font-medium bg-white text-black transition hover:opacity-90 whitespace-nowrap;
+    
+  }
+}
